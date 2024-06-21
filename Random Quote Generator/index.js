@@ -18,7 +18,7 @@ function generateQuote(){
     if (usedIndexes.size === quotes.length) {
         alert("All quotes have been used!");
         // Optionally reset to start over
-        // usedIndexes.clear();
+        usedIndexes.clear();
         return;
     }
 
