@@ -1,6 +1,7 @@
-let items = ["hello world", "123"];
+let items = [];
 const itemsDiv = document.getElementById("items")
 const input = document.getElementById("itemInput")
+const storageKey = "items";
 
 function renderItems(){
     itemsDiv.innerHTML = null; //removing everything that is inside itemsDiv
@@ -23,29 +24,35 @@ function renderItems(){
         
         itemsDiv.appendChild(container) 
     }
-
+}
 
 function loadItems(){
-
+    const oldItems = localStorage.getItem(storageKey)
+    if(oldItems) items = JSON.parse(oldItems) // Parse reads through oldItems and convert it to a js object: in this case to an array
+    renderItems()
 }
 
 function saveItems(){
- 
+    const stringItems = JSON.stringify(items);
+    localStorage.setItem(storageKey, stringItems) 
 }
 
-function addItems(){
+function addItem(){
     const value = input.value;
     if(!value){
         alert("You can't add an empty item")
-        return
+        return  // naked return
     }
     items.push(value)
     renderItems()
     input.value = ""
-
+    saveItems()
 }
 
 function removeItem(idx){
-    items.splice(idx, 1) // remove 1 element at a specified index
+    items.splice(idx, 1)    // removes 1 element at a specified index
     renderItems()
+    saveItems()
 }
+
+document.addEventListener("DOMContentLoaded", loadItems)  //
