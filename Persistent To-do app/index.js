@@ -34,14 +34,14 @@ function saveItems(){
 }
 
 function addItems(){
-    // const value = input.value;
-    // if(!value){
-    //     alert("You can't add an empty item")
-    //     return
-    // }
-    // items.push(value)
-    // renderItems()
-    // input.value = ""
+    const value = input.value;
+    if(!value){
+        alert("You can't add an empty item")
+        return
+    }
+    items.push(value)
+    renderItems()
+    input.value = ""
 
 }
 
