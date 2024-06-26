@@ -55,4 +55,4 @@ function removeItem(idx){
     saveItems()
 }
 
-document.addEventListener("DOMContentLoaded", loadItems)  //
+document.addEventListener("DOMContentLoaded", loadItems)  // to execute js after the html page is loaded
